@@ -1,0 +1,15 @@
+<form [formGroup]="telephoneForm" (ngSubmit)="onSubmit()">
+    <label>
+      Libellé : <input type="text" formControlName="libelle">
+    </label>
+    <label>
+      Marque : <input type="text" formControlName="marque">
+    </label>
+    <label>
+      Prix : <input matInput type="text" formControlName="prix">
+      <!-- <mat-error *ngIf="prix.invalid && prix.errors?.required">
+        Le prix est obligatoire !
+      </mat-error> -->
+    </label>
+  <button type="submit">Enregistrer</button>
+</form>
