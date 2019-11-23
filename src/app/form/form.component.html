@@ -1,15 +1,64 @@
-<form [formGroup]="telephoneForm" (ngSubmit)="onSubmit()">
-    <label>
-      Libellé : <input type="text" formControlName="libelle">
-    </label>
-    <label>
-      Marque : <input type="text" formControlName="marque">
-    </label>
-    <label>
-      Prix : <input matInput type="text" formControlName="prix">
-      <!-- <mat-error *ngIf="prix.invalid && prix.errors?.required">
-        Le prix est obligatoire !
-      </mat-error> -->
-    </label>
-  <button type="submit">Enregistrer</button>
+<form [formGroup]="telephone" (ngSubmit)="onSubmit()">
+
+  <h3>Formulaire</h3>
+
+  <mat-form-field>
+    <input matInput formControlName='libelle' placeholder="Nom du téléphone" />
+
+    <mat-error *ngIf="libelle.invalid && libelle.errors?.minLength">
+      Le nom saisie est trop court.
+    </mat-error>
+
+    <mat-error *ngIf="libelle.invalid && libelle.errors?.required">
+      Le nom doit être saisie.
+    </mat-error>
+  </mat-form-field>
+  <hr>
+
+  <mat-form-field>
+    <input matInput formControlName='email' placeholder="E-mail" />
+
+    <mat-error *ngIf="email.invalid && email.errors?.email">
+      Le format de l'email est invalide.
+    </mat-error>
+
+    <mat-error *ngIf="email.invalid && email.errors?.required">
+      L'email doit être saisie.
+    </mat-error>
+  </mat-form-field>
+<hr>
+
+  <mat-form-field>
+    <input matInput formControlName='prix' placeholder="Prix" />
+
+    <mat-error *ngIf="prix.invalid && prix.errors?.required">
+      Le prix doit être saisie.
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button class="center-button" type="submit">Enregistrer</button>
 </form>
+
+<p>Infos saisies : {{ telephone.value | json }}</p>
+<!--
+    (ngSubmit)="onSubmit()"
+  <label class="pb-1 center-content">
+    Libellé : <input type="text" formControlName="libelle">
+  </label>
+
+  <hr class="w-25">
+
+  <label class="pb-1 center-content">
+    Marque : <input type="text" formControlName="marque">
+  </label>
+
+  <hr class="w-25">
+
+  <label class="pb-1 center-content">
+    Prix : <input matInput type="text" formControlName="prix">
+  </label>
+
+  <hr class="w-25">
+
+  <button mat-raised-button class="center-button" type="submit">Enregistrer</button>
+-->

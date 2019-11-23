@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators, FormControlName} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,27 +7,41 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  telephoneForm = new FormGroup({
-    libelle: new FormControl(''),
-    marque: new FormControl(''),
-    prix: new FormControl('')
-  });
+  telephone: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.telephoneForm.value);
+  constructor(private formBuilder: FormBuilder) { 
   }
+
   ngOnInit() {
-    /* this.telephoneForm = this.formBuilder.group({
+    this.telephone = this.formBuilder.group({
+      libelle: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
       prix: ['', [
         Validators.required
       ]],
-      phones: this.formBuilder.array([])
-    }); */
+    })
   }
+
+  get libelle() {
+    return this.telephone.get('libelle')
+  } 
+
+  get email() {
+    return this.telephone.get('email')
+  }
+
   get prix() {
-    return this.telephoneForm.get('prix');
+    return this.telephone.get('prix')
+  }
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.telephone.value);
   }
 }
