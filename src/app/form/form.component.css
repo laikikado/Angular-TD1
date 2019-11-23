@@ -1,4 +1,4 @@
-hr {
+.no-bar {
     background-color: white;
     color: white;
     border : 1px;
@@ -6,8 +6,4 @@ hr {
 
 .center-content {
     margin-left: 5%;
-}
-
-.center-button {
-    margin-left: 7%;
 }

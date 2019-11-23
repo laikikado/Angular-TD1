@@ -2,10 +2,11 @@
 
   <h3>Formulaire</h3>
 
+  <!-- Field Modèle du téléphone - libelle -->
   <mat-form-field>
-    <input matInput formControlName='libelle' placeholder="Nom du téléphone" />
+    <input matInput formControlName='libelle' placeholder="Modèle du téléphone" />
 
-    <mat-error *ngIf="libelle.invalid && libelle.errors?.minLength">
+    <mat-error *ngIf="libelle.invalid && libelle.errors?.minlength">
       Le nom saisie est trop court.
     </mat-error>
 
@@ -13,10 +14,11 @@
       Le nom doit être saisie.
     </mat-error>
   </mat-form-field>
-  <hr>
+  <hr class="no-bar">
 
+  <!-- Field email de l'utilisateur - email -->
   <mat-form-field>
-    <input matInput formControlName='email' placeholder="E-mail" />
+    <input matInput formControlName='email' placeholder="Email" />
 
     <mat-error *ngIf="email.invalid && email.errors?.email">
       Le format de l'email est invalide.
@@ -26,39 +28,28 @@
       L'email doit être saisie.
     </mat-error>
   </mat-form-field>
-<hr>
+  <hr class="no-bar">
 
+  <!-- Field prix du téléphone - prix -->
   <mat-form-field>
     <input matInput formControlName='prix' placeholder="Prix" />
 
-    <mat-error *ngIf="prix.invalid && prix.errors?.required">
-      Le prix doit être saisie.
+    <mat-error *ngIf="prix.invalid && prix.errors?.pattern">
+      Le prix saisie doit être un nombre.
+    </mat-error>
+
+    <mat-error *ngIf="prix.invalid && prix.errors?.prixRange">
+      Le prix saisie doit être compris entre 10€ et 1 000€.
     </mat-error>
   </mat-form-field>
+  <hr class="no-bar">
 
-  <button mat-raised-button class="center-button" type="submit">Enregistrer</button>
+  <button mat-raised-button class="center-button" type="submit" [disabled]="telephone.invalid">Enregistrer</button>
 </form>
 
+<br>
+<hr>
+
+<!-- Retour saisies formulaire -->
+<p class="font-weight-bold">Test Return Forms : </p>
 <p>Infos saisies : {{ telephone.value | json }}</p>
-<!--
-    (ngSubmit)="onSubmit()"
-  <label class="pb-1 center-content">
-    Libellé : <input type="text" formControlName="libelle">
-  </label>
-
-  <hr class="w-25">
-
-  <label class="pb-1 center-content">
-    Marque : <input type="text" formControlName="marque">
-  </label>
-
-  <hr class="w-25">
-
-  <label class="pb-1 center-content">
-    Prix : <input matInput type="text" formControlName="prix">
-  </label>
-
-  <hr class="w-25">
-
-  <button mat-raised-button class="center-button" type="submit">Enregistrer</button>
--->
