@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { prixRangeValidator } from './prix.validator';
+import { prixRangeValidator } from '../validator_prix/prix.validator';
 
 @Component({
   selector: 'app-form',

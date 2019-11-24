@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
-import {ChangeCurrency} from './form/change-currency.pipe';
+import { ChangeCurrency } from './pipe_prix/change-currency.pipe';
 
 @NgModule({
   declarations: [

@@ -33,10 +33,7 @@
   <!-- Field prix du téléphone - prix -->
   <mat-form-field>
     <input matInput formControlName='prix' placeholder="Prix"/>
-    <p>{{ prix | currency : 'EUR' }}<p>
-
-    <button class="center-button" type="submit"><!--(click)="{{ telephone.prix | toDollars }}"-->Transformer en Dollars</button>
-    <!--{{ telephone.prix | toDollars }}-->
+    <!--<p>{{ prix | currency : 'EUR' }}<p>-->
 
     <mat-error *ngIf="prix.invalid && prix.errors?.pattern">
       Le prix saisie doit être un nombre.
@@ -46,7 +43,8 @@
       Le prix saisie doit être compris entre 10€ et 1 000€.
     </mat-error>
   </mat-form-field>
-  <hr class="no-bar">
+
+  <hr class="no-bar"><br>
 
   <button mat-raised-button class="center-button" type="submit" [disabled]="telephone.invalid">Enregistrer</button>
 </form>
@@ -56,4 +54,7 @@
 
 <!-- Retour saisies formulaire -->
 <p class="font-weight-bold">Test Return Forms : </p>
-<p>Infos saisies : {{ telephone.value | json }}</p>
+<p>Libelle saisi : {{ libelle.value | json }}</p>
+<p>Email saisi : {{ email.value | json }}</p>
+<p>Prix saisi : {{ prix.value | currency:'EUR' }}</p>
+<p>Prix saisi : {{ prix.value | toDollars | currency }}</p>

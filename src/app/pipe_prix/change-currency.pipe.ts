@@ -5,6 +5,6 @@ export class ChangeCurrency implements PipeTransform {
   transform(
     value: number
   ): any {
-    return value / 0.75;
+    return value * 1.1;
   }
 }
