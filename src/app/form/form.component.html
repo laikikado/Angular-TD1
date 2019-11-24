@@ -32,7 +32,11 @@
 
   <!-- Field prix du téléphone - prix -->
   <mat-form-field>
-    <input matInput formControlName='prix' placeholder="Prix" />
+    <input matInput formControlName='prix' placeholder="Prix"/>
+    <p>{{ prix | currency : 'EUR' }}<p>
+
+    <button class="center-button" type="submit"><!--(click)="{{ telephone.prix | toDollars }}"-->Transformer en Dollars</button>
+    <!--{{ telephone.prix | toDollars }}-->
 
     <mat-error *ngIf="prix.invalid && prix.errors?.pattern">
       Le prix saisie doit être un nombre.
